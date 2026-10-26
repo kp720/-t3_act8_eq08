@@ -23,9 +23,12 @@ export const Sidebar = () => {
     }
   };
 
-  return (
+return (
     <aside style={styles.container}>
       <div style={{ marginTop: '20px' }}>
+        <Link to="/inicio" style={styles.menuItem(isActive('/inicio'))}>
+          🏠 INICIO
+        </Link>
         <Link to="/tabla" style={styles.menuItem(isActive('/tabla'))}>
           🗄️ TABLA DE DATOS
         </Link>
