@@ -1,4 +1,4 @@
-# Actividad 8: Consumo de API - Equipo 06
+# Actividad 8: Consumo de API - Equipo 08
 
 ### Integrantes del Equipo
 
@@ -12,7 +12,7 @@ Espinoza De La Rosa Uriel
 
 https://dummyjson.com/auth/login
 Para la gestión del sistema y la tabla de datos principal (Filtros, Paginación y CRUD) elegimos consumir la API de:
-" DummyJSON API " (Módulo de productos / usuarios / o el módulo específico que hayan renderizado en su tabla).
+" DummyJSON API " 
 
 ### API utilizada  para Almacen central:
 
