@@ -33,8 +33,7 @@ Usuario:emilys
 Contraseña: emilyspass
 
 Link de VPS:
-
-
+http://94.130.98.27/t3_act8_eq08/
 
 Link de GitHub:
-
+https://github.com/kp720/-t3_act8_eq08
