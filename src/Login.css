@@ -18,15 +18,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  position: relative;
   background:
     radial-gradient(circle at 50% 50%, rgba(30, 64, 175, 0.12), transparent 60%),
     #0a0d14;
 }
-
-.login-brand {
-  position: relative;
-}
-
 
 .login-brand-bg {
   position: fixed;
