@@ -21,7 +21,7 @@ const Layout = ({ children }) => (
 
 function App() {
   return (
-    <BrowserRouter basename="/-t3_act8_eq08">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         
