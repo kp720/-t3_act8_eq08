@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { Navbar } from './components/Navbar';
+import { Inicio } from './components/Inicio';
+import { Table } from './components/Table';
 import Login from './pages/Login';
-import { Dashboard } from './pages/Dashboard';
 import { ProtectedRoute } from './components/ProtectedRoute'; 
 
 
@@ -27,7 +28,22 @@ function App() {
         <Route path="/login" element={<Login />} />
         
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+           <Route
+            path="/inicio"
+            element={
+              <Layout>
+                <Inicio />
+              </Layout>
+            }
+          />
+          <Route
+            path="/table"
+            element={
+              <Layout>
+                <Table />
+              </Layout>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>

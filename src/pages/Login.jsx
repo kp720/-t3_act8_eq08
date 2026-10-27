@@ -45,7 +45,7 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('user', JSON.stringify(data));
-        navigate('/dashboard');
+        navigate('/inicio');
       } else {
         setError('Usuario o contraseña incorrectos');
       }

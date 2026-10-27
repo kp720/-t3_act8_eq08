@@ -1,4 +1,15 @@
+import { useLocation } from 'react-router-dom';
+
+const titulos = {
+  '/inicio': 'INICIO',
+  '/table': 'TABLA DE DATOS',   
+};
+
 export const Navbar = () => {
+
+  const { pathname } = useLocation();
+  const titulo = titulos[pathname] ?? 'INICIO';
+
   const user = {
     firstName: 'Uriel',
     lastName: '',
@@ -12,7 +23,7 @@ export const Navbar = () => {
       borderBottom: '1px solid #1e293b'
     }}>
       <h2 style={{ color: 'white', margin: 0, fontSize: '18px', letterSpacing: '2px' }}>
-        TABLA DE DATOS
+        {titulo}
       </h2>
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>

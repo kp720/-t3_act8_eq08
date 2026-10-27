@@ -1,8 +1,14 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isActive = (path) => location.pathname === path;
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/login', { replace: true });
+  };
 
   const styles = {
     container: {
@@ -29,11 +35,11 @@ return (
         <Link to="/inicio" style={styles.menuItem(isActive('/inicio'))}>
           🏠 INICIO
         </Link>
-        <Link to="/tabla" style={styles.menuItem(isActive('/tabla'))}>
+        <Link to="/table" style={styles.menuItem(isActive('/table'))}>
           🗄️ TABLA DE DATOS
         </Link>
       </div>
-      <button style={styles.btnExit} onClick={() => console.log('Cerrar sesión')}>
+      <button style={styles.btnExit} onClick={handleLogout}>
         🚪 EXIT
       </button>
     </aside>
