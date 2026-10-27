@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Sidebar } from './components/Sidebar';
 import { Navbar } from './components/Navbar';
-import { Table } from './components/Table';
-import { Inicio } from './components/Inicio'; 
+import Login from './pages/Login';
+import { Dashboard } from './pages/Dashboard';
+import { ProtectedRoute } from './components/ProtectedRoute'; 
 
-// Layout reparado para evitar desbordamientos
+
 const Layout = ({ children }) => (
   <div style={{ display: 'flex', height: '100vh', width: '100vw', margin: 0, overflow: 'hidden', boxSizing: 'border-box' }}>
     <Sidebar />
@@ -19,11 +20,15 @@ const Layout = ({ children }) => (
 
 function App() {
   return (
-    <BrowserRouter basename="/t3_act8_eq08">
+    <BrowserRouter basename="/-t3_act8_eq08">
       <Routes>
-        <Route path="/" element={<Navigate to="/inicio" replace />} />
-        <Route path="/inicio" element={<Layout><Inicio /></Layout>} />
-        <Route path="/tabla" element={<Layout><Table /></Layout>} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        
+        <Route path="/login" element={<Login />} />
+        
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
