@@ -168,6 +168,7 @@ export const Table = () => {
         <select value={limit} onChange={(e) => updateURL({ limit: e.target.value, page: 1 })} style={styles.input}>
           <option value="10">10 por página</option>
           <option value="20">20 por página</option>
+          <option value="40">40 por página</option>
           <option value="50">50 por página</option>
         </select>
         <div style={{ display: 'flex', gap: '10px' }}>

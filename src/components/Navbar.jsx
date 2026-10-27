@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const titulos = {
   '/inicio': 'INICIO',
@@ -8,12 +8,15 @@ const titulos = {
 export const Navbar = () => {
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const titulo = titulos[pathname] ?? 'INICIO';
 
-  const user = {
-    firstName: 'Uriel',
-    lastName: '',
-    image: 'https://dummyjson.com/icon/uriel/128' 
+  const user = JSON.parse(localStorage.getItem('user')) || {};
+  const nombre = user.firstName ? `${user.firstName} ${user.lastName ?? ''}` : user.username;
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -28,7 +31,7 @@ export const Navbar = () => {
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>
           <span style={{ fontWeight: 'bold', fontSize: '15px', color: '#f8fafc' }}>
-            {user.firstName} {user.lastName}
+            {nombre}
           </span>
           <span style={{ fontSize: '12px', color: '#64748b' }}>Administrador</span>
         </div>
@@ -36,6 +39,12 @@ export const Navbar = () => {
           src={user.image} alt="Perfil" 
           style={{ width: '40px', height: '40px', borderRadius: '50%', border: '2px solid #3b82f6' }} 
         />
+        <button onClick={handleLogout} style={{
+          backgroundColor: '#3b82f6', color: 'white', border: 'none',
+          padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold'
+        }}>
+          Cerrar sesión
+        </button>
       </div>
     </nav>
   );

@@ -26,8 +26,21 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const [fieldErrors, setFieldErrors] = useState({});
+
+  const validate = () => {
+    const errs = {};
+    if (!username.trim()) errs.username = 'El usuario es obligatorio';
+    else if (username.trim().length < 3) errs.username = 'Mínimo 3 caracteres';
+    if (!password) errs.password = 'La contraseña es obligatoria';
+    else if (password.length < 4) errs.password = 'Mínimo 4 caracteres';
+    setFieldErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validate()) return;
     setLoading(true);
     setError('');
 
@@ -87,6 +100,7 @@ const Login = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="username"
               />
+              {fieldErrors.username && <p className="login-error">{fieldErrors.username}</p>}
             </div>
 
             <label className="login-label" htmlFor="password">Contraseña</label>
@@ -101,6 +115,7 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
+              {fieldErrors.password && <p className="login-error">{fieldErrors.password}</p>}
             </div>
 
             {error && <p className="login-error">{error}</p>}
